@@ -1,26 +1,58 @@
+/* styles.css */
+
+/* General styles for the popup */
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .chat-container {
-    width: 300px;
-    padding: 10px;
-  }
-  
-  #chatbox {
-    height: 300px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 5px;
-  }
-  
-  #user-input {
-    width: calc(100% - 60px);
-    padding: 5px;
-  }
-  
-  #send-button {
-    width: 50px;
-    padding: 5px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 400px;
+}
+
+#chatbox {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+#user-input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styles for chat messages */
+#chatbox div {
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+#chatbox .user {
+  background-color: #e0f7fa;
+  text-align: left;
+}
+
+#chatbox .chatgpt {
+  background-color: #e8f5e9;
+  text-align: left;
+}
