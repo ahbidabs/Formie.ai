@@ -12,30 +12,47 @@ function getTextContent() {
   return document.body.innerText;
 }
 
+// Function to detect and fill job application form fields
+function detectAndFillJobApplicationForm(userData) {
+  const inputs = Array.from(document.querySelectorAll('input, textarea, select'));
+  
+  inputs.forEach(input => {
+    if (input.name.includes("name")) {
+      input.value = userData.name || "";
+    } else if (input.name.includes("email")) {
+      input.value = userData.email || "";
+    } else if (input.name.includes("phone")) {
+      input.value = userData.phone || "";
+    } else if (input.name.includes("resume") && userData.resumeLink) {
+      input.value = userData.resumeLink;
+    }
+  });
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'getTextContent') {
     try {
-      // Initial content read
       const initialContent = getTextContent();
 
-      // Set up MutationObserver to detect changes efficiently
       const observer = new MutationObserver(debounce(() => {
         const updatedContent = getTextContent();
         sendResponse({ text: updatedContent });
-        observer.disconnect(); // Stop observing after capturing the content
-      }, 1000)); // 1-second debounce
+        observer.disconnect();
+      }, 1000));
 
       observer.observe(document.body, { childList: true, subtree: true });
 
-      // Fallback for when no dynamic content is detected after a timeout
       setTimeout(() => {
         sendResponse({ text: initialContent });
-        observer.disconnect(); // Stop observing after capturing the content
-      }, 3000); // Adjust timeout as needed
+        observer.disconnect();
+      }, 3000);
     } catch (error) {
       console.error('Error retrieving text content:', error);
       sendResponse({ text: null });
     }
+  } else if (message.action === 'fillForm') {
+    detectAndFillJobApplicationForm(message.userData);
+    sendResponse({ success: true });
   }
-  return true; // Required for async response
+  return true;
 });
