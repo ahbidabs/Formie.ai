@@ -53,7 +53,7 @@ async function getChatGPTResponse(userInput, textContent) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer sk-proj-rtl8xw4O4du6FimFCKsaT3BlbkFJQgXaG4kJABwPxI9k5h1F'
+          'Authorization': ''
         },
         body: JSON.stringify({
           model: 'gpt-3.5-turbo',
