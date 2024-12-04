@@ -1,0 +1,44 @@
+/* Sidebar */
+#sidebar {
+  background: linear-gradient(145deg, #264445, #2f855a); /* Formie.AI greens */
+  color: #f1f1f1;
+  padding: 15px;
+  min-height: 100vh;
+}
+
+#sidebar h2 {
+  text-align: center;
+  color: #8ac540; /* Bright green */
+  font-family: 'Poppins', sans-serif;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar ul li a {
+  display: block;
+  color: #dcdcdc;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+#sidebar ul li a.active,
+#sidebar ul li a:hover {
+  background: linear-gradient(90deg, #8ac540, #2f855a);
+  color: white;
+}
+
+/* Main content */
+#main-content {
+  padding: 15px;
+}
+
+h3 {
+  color: #2f855a;
+  font-family: 'Poppins', sans-serif;
+}
+
