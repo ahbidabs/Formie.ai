@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpage Content Reader</title>
+  <title>Formie.AI</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+  <h3 class="header">Formie.AI</h3>
+  <div class="icon-container">
+    <img id="extension-icon" src="icons/logo128.png" alt="Formie.AI Logo">
+  </div>
+  
   <div id="chatbox"></div>
   <input type="text" id="user-input" placeholder="Enter your message">
-  <button id="send-button">Send</button>
+  <button id="send-button">Chat</button>
+  
+  <h4>Form Filler</h4>
+  <button id="fill-button" class="btn-primary">Fill Form</button>
+  <button id="startChat" class="initial">Start Chat</button>
+
   <script src="popup.js"></script>
 </body>
 </html>
+

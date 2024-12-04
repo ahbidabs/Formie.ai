@@ -1,4 +1,4 @@
-// Debounce function to limit the rate of function execution
+// Debounce function to limit the rate at which a function can fire
 function debounce(func, wait) {
   let timeout;
   return function(...args) {
@@ -10,6 +10,11 @@ function debounce(func, wait) {
 // Function to get visible text content
 function getTextContent() {
   return document.body.innerText;
+}
+
+// Function to get HTML content
+function getSiteHTML() {
+  return document.documentElement.outerHTML;
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -36,6 +41,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       console.error('Error retrieving text content:', error);
       sendResponse({ text: null });
     }
+  } else if (message.action === 'getSiteHTML') {
+    try {
+      const htmlContent = getSiteHTML();
+      sendResponse({ html: htmlContent });
+    } catch (error) {
+      console.error('Error retrieving HTML content:', error);
+      sendResponse({ html: null });
+    }
   }
-  return true; // Required for async response
+  return true; // Keep the message channel open for sendResponse
 });
